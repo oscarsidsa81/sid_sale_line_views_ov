@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- OV - Varios campos -->
+    <record id="view_sale_order_line_tree_ov_varios" model="ir.ui.view">
+      <field name="name">sid.sale.order.line.tree.ov.varios</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_order_line_tree"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='order_id']" position="before">
+          <field name="sequence" optional="show" widget="handle"/>
+          <field name="product_id" optional="show"/>
+        </xpath>
+
+        <xpath expr="//field[@name='order_id']" position="before">
+          <xpath expr="//field[@name='order_partner_id']" position="move"/>
+        </xpath>
+
+        <xpath expr="//field[@name='name']" position="before">
+          <field name="item" optional="show"/>
+          <field name="x_sale_line_tags" widget="many2many_tags" readonly="0" string="Actividades" options="{'color_field': 'x_color'}"/>
+        </xpath>
+
+        <xpath expr="//field[@name='unit_weight']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='price_subtotal']" position="attributes">
+          <attribute name="optional">hide</attribute>
+          <attribute name="groups">!__export__.res_groups_107_41375697</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='salesman_id']" position="after">
+          <xpath expr="//field[@name='route_id']" position="move"/>
+        </xpath>
+
+        <xpath expr="//field[@name='order_partner_id']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='salesman_id']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='calculated_date']" position="attributes">
+          <attribute name="readonly">0</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='calculated_date']" position="attributes">
+          <attribute name="string">Fecha Contractual</attribute>
+          <attribute name="widget">date</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='supplier_exchange_rate']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='price_unit']" position="attributes">
+          <attribute name="string">Precio</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_delivered']" position="attributes">
+          <attribute name="string">Entregado</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='forecasted_qty']" position="attributes">
+          <attribute name="string">Pronosticada</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='order_id']" position="before">
+          <field name="state" optional="hide"/>
+        </xpath>
+
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="multi_edit">true</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='order_id']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_delivered']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="decoration-info">(qty_delivered &lt; product_uom_qty and state == 'sale')</attribute>
+          <attribute name="decoration-success">(qty_delivered &gt;= product_uom_qty and state == 'sale' and qty_to_invoice &gt; 0)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='forecasted_qty']" position="after">
+          <field name="supplier_incoterm" string="Incoterm Compra" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
+          <field name="supplier_delivery_place" string="Lugar de Recogida" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_invoiced']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_to_invoice']" position="attributes">
+          <attribute name="optional">hide</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
+          <xpath expr="//field[@name='forecasted_qty']" position="move"/>
+        </xpath>
+
+        <xpath expr="//field[@name='forecasted_qty']" position="after">
+          <xpath expr="//field[@name='price_unit']" position="move"/>
+          <field name="discount" optional="show"/>
+          <xpath expr="//field[@name='purchase_price']" position="move"/>
+        </xpath>
+
+        <xpath expr="//field[@name='purchase_price']" position="after">
+          <field name="customer_lead" string="Plazo Venta (días)" widget="integer" optional="show"/>
+          <field name="supplier_delivery_days" string="Plazo Compra (días)" readonly="0" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
+        </xpath>
+
+        <xpath expr="//field[@name='customer_lead']" position="after">
+          <field name="customer_incoterm" string="Incoterm Venta" optional="show" readonly="0"/>
+          <field name="customer_delivery_place" string="Lugar de Entrega" optional="show" readonly="0"/>
+          <field name="supplier_id" string="Proveedor" optional="show"/>
+          <field name="po_comments" readonly="0" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
+        </xpath>
+
+        <xpath expr="//field[@name='calculated_date']" position="after">
+          <field name="comments" widget="text" string="Comentarios" optional="show"/>
+        </xpath>
+
+        <xpath expr="//field[@name='order_id']" position="attributes">
+          <attribute name="decoration-bf">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+          <attribute name="decoration-success">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_invoiced']" position="attributes">
+          <attribute name="decoration-bf">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+          <attribute name="decoration-success">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom_qty']" position="attributes">
+          <attribute name="decoration-bf">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+          <attribute name="decoration-success">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='forecasted_qty']" position="attributes">
+          <attribute name="decoration-bf">(state != 'sale' and route_id == 68 and product_uom_qty &gt; forecasted_qty)</attribute>
+          <attribute name="decoration-danger">(state != 'sale' and route_id == 68 and product_uom_qty &gt; forecasted_qty)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='supplier_id']" position="attributes">
+          <attribute name="domain">[('is_company', '=', True)]</attribute>
+        </xpath>
+
+        <xpath expr="//tree" position="attributes">
+          <attribute name="limit">500</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
+          <xpath expr="//field[@name='qty_delivered']" position="move"/>
+          <xpath expr="//field[@name='qty_to_invoice']" position="move"/>
+          <xpath expr="//field[@name='qty_invoiced']" position="move"/>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_to_invoice']" position="attributes">
+          <attribute name="string">A facturar</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='qty_invoiced']" position="attributes">
+          <attribute name="string">Facturado</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom_qty']" position="attributes">
+          <attribute name="string">Pedido</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
+          <field name="virtual_available_at_date" string="Disponible a Fecha" optional="show" readonly="1"/>
+        </xpath>
+
+        <xpath expr="//field[@name='virtual_available_at_date']" position="attributes">
+          <attribute name="decoration-bf">(state != 'sale' and route_id == 68 and product_uom_qty &gt; virtual_available_at_date)</attribute>
+          <attribute name="decoration-danger">(state != 'sale' and route_id == 68 and product_uom_qty &gt; virtual_available_at_date)</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='calculated_date']" position="after">
+          <field name="company_id" invisible="1"/>
+        </xpath>
+
+        <xpath expr="//field[@name='product_id']" position="attributes">
+          <attribute name="attrs">{'readonly': [('state','in',('sale','done','cancel'))]}</attribute>
+          <attribute name="context">{'quantity': product_uom_qty, 'name': name, 'uom': product_uom, 'company_id': company_id}</attribute>
+        </xpath>
+
+      </field>
+    </record>
+
+    <!-- OV - decimales precios -->
+    <record id="view_sale_order_line_tree_ov_decimales" model="ir.ui.view">
+      <field name="name">sid.sale.order.line.tree.ov.decimales</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_order_line_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='price_unit']" position="attributes">
+          <attribute name="digits">[12,2]</attribute>
+        </xpath>
+        <xpath expr="//field[@name='purchase_price']" position="attributes">
+          <attribute name="digits">[12,2]</attribute>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- OV - Rutas -->
+    <record id="view_sale_order_line_tree_ov_rutas" model="ir.ui.view">
+      <field name="name">sid.sale.order.line.tree.ov.rutas</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_order_line_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='route_id']" position="attributes">
+          <attribute name="attrs">{"readonly": ["&amp;",["state","=","sale"],["id","&gt;",0]]}</attribute>
+          <attribute name="options">{"no_open":true}</attribute>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- OV - Impuestos (incluye botón Revisa Facturación con action id legado) -->
+    <record id="view_sale_order_line_tree_ov_impuestos" model="ir.ui.view">
+      <field name="name">sid.sale.order.line.tree.ov.impuestos</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_order_line_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='price_unit']" position="after">
+          <field name="tax_id" widget="many2many_tags" optional="hide"
+                 options="{'no_create': True}" context="{'search_view_ref': 'account.account_tax_view_search'}"
+                 domain="[('type_tax_use','=','sale')]" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+        </xpath>
+        <xpath expr="//field[@name='tax_id']" position="attributes">
+          <attribute name="groups">sales_team.group_sale_salesman</attribute>
+        </xpath>
+        <xpath expr="//field[@name='price_subtotal']" position="before">
+          <field name="untaxed_amount_to_invoice"/>
+          <field name="untaxed_amount_invoiced"/>
+        </xpath>
+        <xpath expr="//tree" position="inside">
+          <header>
+            <button name="1266" confirm="¿Estás seguro de que deseas ejecutar esta acción?" type="action"
+                    string="Revisa Facturación" class="oe_button oe_form_button oe_highlight"
+                    groups="__export__.res_groups_112_5fc527b2,sales_team.group_sale_manager,purchase.group_purchase_manager,base.group_system"/>
+          </header>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- Studio: Qty stock Ptllno -->
+    <record id="view_sale_order_line_tree_studio_qty_stock_ptllno" model="ir.ui.view">
+      <field name="name">sid.sale.order.line.tree.studio.qty_stock_ptllno</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_order_line_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='qty_delivered']" position="after">
+          <field optional="show" name="x_studio_qty_stock_ptllno" string="Qty stock Ptllno"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
