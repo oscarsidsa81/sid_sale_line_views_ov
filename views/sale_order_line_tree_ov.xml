@@ -11,6 +11,7 @@
 
         <xpath expr="//field[@name='order_id']" position="before">
           <field name="sequence" optional="show" widget="handle"/>
+          <field name="sid_has_po_delay" optional="show"/>
           <field name="product_id" optional="show"/>
         </xpath>
 
@@ -20,7 +21,6 @@
 
         <xpath expr="//field[@name='name']" position="before">
           <field name="item" optional="show"/>
-          <field name="x_sale_line_tags" widget="many2many_tags" readonly="0" string="Actividades" options="{'color_field': 'x_color'}"/>
         </xpath>
 
         <xpath expr="//field[@name='unit_weight']" position="attributes">
@@ -250,13 +250,6 @@
           <field name="untaxed_amount_to_invoice"/>
           <field name="untaxed_amount_invoiced"/>
         </xpath>
-        <xpath expr="//tree" position="inside">
-          <header>
-            <button name="1266" confirm="¿Estás seguro de que deseas ejecutar esta acción?" type="action"
-                    string="Revisa Facturación" class="oe_button oe_form_button oe_highlight"
-                    groups="__export__.res_groups_112_5fc527b2,sales_team.group_sale_manager,purchase.group_purchase_manager,base.group_system"/>
-          </header>
-        </xpath>
       </field>
     </record>
 
@@ -267,7 +260,8 @@
       <field name="inherit_id" ref="sale.view_order_line_tree"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='qty_delivered']" position="after">
-          <field optional="show" name="x_studio_qty_stock_ptllno" string="Qty stock Ptllno"/>
+          <field optional="show" name="sid_qty_stock_mad" string="Qty stock Mad"/>
+          <field optional="show" name="sid_qty_stock_ptllno" string="Qty stock Ptllno"/>
         </xpath>
       </field>
     </record>
