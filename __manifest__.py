@@ -11,6 +11,7 @@
         "sale_stock",
         "stock",
         "sid_sale_line_custom_fields",
+        "sid_purchase_delay_sync",
     ],
     "data": [
         "views/sale_order_line_form_readonly_ov.xml",
