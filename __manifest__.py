@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "SID - Sale Order Line Views (OV)",
+    "name": "sid_sale_line_views_ov",
     "version": "15.0.1.0.0",
     "category": "Sales",
     "summary": "Migración de vistas OV (tree/form/search) de sale.order.line desde Studio/export.",
-    "author": "SID",
+    "author": "oscarsidsa81",
     "license": "LGPL-3",
     "depends": [
         "sale",
