@@ -25,8 +25,6 @@
         <xpath expr="//search" position="inside">
           <searchpanel>
             <field name="state" string="Estado Pedido" enable_counters="1" select="multi"/>
-            <field name="pending_invoice" string="Pendiente Facturación" enable_counters="1" select="multi"/>
-            <field name="pending_delivery" string="Pendiente Entrega" enable_counters="1" select="multi"/>
             <field name="route_id" enable_counters="1" select="multi"/>
             <field name="supplier_id" enable_counters="1" select="multi"/>
           </searchpanel>
