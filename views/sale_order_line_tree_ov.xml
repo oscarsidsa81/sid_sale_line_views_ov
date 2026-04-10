@@ -60,10 +60,6 @@
           <attribute name="string">Entregado</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='forecasted_qty']" position="attributes">
-          <attribute name="string">Pronosticada</attribute>
-        </xpath>
-
         <xpath expr="//field[@name='order_id']" position="before">
           <field name="state" optional="hide"/>
         </xpath>
@@ -84,7 +80,7 @@
           <attribute name="readonly">1</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='forecasted_qty']" position="after">
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
           <field name="supplier_incoterm" string="Incoterm Compra" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
           <field name="supplier_delivery_place" string="Lugar de Recogida" optional="show" attrs='{"invisible": [["supplier_id","==",False]]}'/>
         </xpath>
@@ -101,11 +97,9 @@
           <attribute name="invisible">1</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='product_uom_qty']" position="after">
-          <xpath expr="//field[@name='forecasted_qty']" position="move"/>
-        </xpath>
 
-        <xpath expr="//field[@name='forecasted_qty']" position="after">
+
+        <xpath expr="//field[@name='product_uom_qty']" position="after">
           <xpath expr="//field[@name='price_unit']" position="move"/>
           <field name="discount" optional="show"/>
           <xpath expr="//field[@name='purchase_price']" position="move"/>
