@@ -60,11 +60,6 @@
           <attribute name="attrs">{}</attribute>
           <attribute name="readonly">0</attribute>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
-          <group name="Actividades">
-            <field name="activity_ids" style="width: 90%" colspan="2" force_save="True" attrs="{}" readonly="1"/>
-          </group>
-        </xpath>
       </field>
     </record>
 
