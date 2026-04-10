@@ -31,10 +31,6 @@
           <attribute name="groups">!__export__.res_groups_107_41375697</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='salesman_id']" position="after">
-          <xpath expr="//field[@name='route_id']" position="move"/>
-        </xpath>
-
         <xpath expr="//field[@name='order_partner_id']" position="attributes">
           <attribute name="optional">hide</attribute>
         </xpath>
@@ -86,11 +82,6 @@
 
         <xpath expr="//field[@name='qty_delivered']" position="attributes">
           <attribute name="readonly">1</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]" position="attributes">
-          <attribute name="decoration-info">(qty_delivered &lt; product_uom_qty and state == 'sale')</attribute>
-          <attribute name="decoration-success">(qty_delivered &gt;= product_uom_qty and state == 'sale' and qty_to_invoice &gt; 0)</attribute>
         </xpath>
 
         <xpath expr="//field[@name='forecasted_qty']" position="after">
@@ -151,10 +142,6 @@
           <attribute name="decoration-success">(qty_to_invoice == 0 and qty_delivered &gt;= product_uom_qty)</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='forecasted_qty']" position="attributes">
-          <attribute name="decoration-bf">(state != 'sale' and route_id == 68 and product_uom_qty &gt; forecasted_qty)</attribute>
-          <attribute name="decoration-danger">(state != 'sale' and route_id == 68 and product_uom_qty &gt; forecasted_qty)</attribute>
-        </xpath>
 
         <xpath expr="//field[@name='supplier_id']" position="attributes">
           <attribute name="domain">[('is_company', '=', True)]</attribute>
@@ -180,15 +167,6 @@
 
         <xpath expr="//field[@name='product_uom_qty']" position="attributes">
           <attribute name="string">Pedido</attribute>
-        </xpath>
-
-        <xpath expr="//field[@name='product_uom_qty']" position="after">
-          <field name="virtual_available_at_date" string="Disponible a Fecha" optional="show" readonly="1"/>
-        </xpath>
-
-        <xpath expr="//field[@name='virtual_available_at_date']" position="attributes">
-          <attribute name="decoration-bf">(state != 'sale' and route_id == 68 and product_uom_qty &gt; virtual_available_at_date)</attribute>
-          <attribute name="decoration-danger">(state != 'sale' and route_id == 68 and product_uom_qty &gt; virtual_available_at_date)</attribute>
         </xpath>
 
         <xpath expr="//field[@name='calculated_date']" position="after">
