@@ -218,19 +218,6 @@
       </field>
     </record>
 
-    <!-- OV - Rutas -->
-    <record id="view_sale_order_line_tree_ov_rutas" model="ir.ui.view">
-      <field name="name">sid.sale.order.line.tree.ov.rutas</field>
-      <field name="model">sale.order.line</field>
-      <field name="inherit_id" ref="sale.view_order_line_tree"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='route_id']" position="attributes">
-          <attribute name="attrs">{"readonly": ["&amp;",["state","=","sale"],["id","&gt;",0]]}</attribute>
-          <attribute name="options">{"no_open":true}</attribute>
-        </xpath>
-      </field>
-    </record>
-
     <!-- OV - Impuestos (incluye botón Revisa Facturación con action id legado) -->
     <record id="view_sale_order_line_tree_ov_impuestos" model="ir.ui.view">
       <field name="name">sid.sale.order.line.tree.ov.impuestos</field>
@@ -248,19 +235,6 @@
         <xpath expr="//field[@name='price_subtotal']" position="before">
           <field name="untaxed_amount_to_invoice"/>
           <field name="untaxed_amount_invoiced"/>
-        </xpath>
-      </field>
-    </record>
-
-    <!-- Studio: Qty stock Ptllno -->
-    <record id="view_sale_order_line_tree_studio_qty_stock_ptllno" model="ir.ui.view">
-      <field name="name">sid.sale.order.line.tree.studio.qty_stock_ptllno</field>
-      <field name="model">sale.order.line</field>
-      <field name="inherit_id" ref="sale.view_order_line_tree"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='qty_delivered']" position="after">
-          <field optional="show" name="sid_qty_stock_mad" string="Qty stock Mad"/>
-          <field optional="show" name="sid_qty_stock_ptllno" string="Qty stock Ptllno"/>
         </xpath>
       </field>
     </record>
