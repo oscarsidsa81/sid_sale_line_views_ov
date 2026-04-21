@@ -2,29 +2,34 @@
 <odoo>
   <data>
 
-    <!-- OV - Varios (sobre sale.sale_order_line_view_form_readonly) -->
     <record id="view_sale_order_line_form_readonly_ov_varios" model="ir.ui.view">
       <field name="name">sid.sale.order.line.form.readonly.ov.varios</field>
       <field name="model">sale.order.line</field>
       <field name="inherit_id" ref="sale.sale_order_line_view_form_readonly"/>
       <field name="arch" type="xml">
+
         <xpath expr="//field[@name='order_id']" position="after">
           <field name="item"/>
         </xpath>
+
         <xpath expr="//field[@name='item']" position="after">
           <field name="display_type"/>
         </xpath>
+
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='name']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="readonly"/>
         </xpath>
+
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='name']" position="after">
           <field name="route_id"/>
         </xpath>
+
         <xpath expr="//field[@name='product_uom_qty']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="readonly"/>
         </xpath>
+
         <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='product_uom_qty']" position="after">
           <xpath expr="//field[@name='price_unit']" position="move"/>
           <field name="purchase_price"/>
@@ -32,37 +37,41 @@
           <field name="comments"/>
           <field name="po_comments"/>
         </xpath>
+
         <xpath expr="//field[@name='discount']" position="before">
           <field name="customer_lead" string="Plazo entrega"/>
           <field name="supplier_delivery_days" string="Plazo proveedor"/>
         </xpath>
+
         <xpath expr="//field[@name='discount']" position="after">
           <xpath expr="//field[@name='product_uom']" position="move"/>
           <xpath expr="//field[@name='qty_delivered']" position="move"/>
           <xpath expr="//field[@name='qty_invoiced']" position="move"/>
-        </xpath>
-        <xpath expr="//field[@name='discount']" position="after">
           <field name="forecasted_qty"/>
         </xpath>
+
         <xpath expr="//field[@name='tax_id']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="invisible">1</attribute>
         </xpath>
+
         <xpath expr="//field[@name='price_tax']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="invisible">1</attribute>
         </xpath>
+
         <xpath expr="//field[@name='calculated_date']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="string">Fecha Contrato</attribute>
         </xpath>
+
         <xpath expr="//field[@name='price_unit']" position="attributes">
           <attribute name="attrs">{}</attribute>
           <attribute name="readonly">0</attribute>
         </xpath>
+
       </field>
     </record>
-
 
   </data>
 </odoo>

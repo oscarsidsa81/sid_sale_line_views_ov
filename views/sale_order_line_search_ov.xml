@@ -10,9 +10,6 @@
 
         <xpath expr="//field[@name='order_id']" position="after">
           <field name="item"/>
-        </xpath>
-
-        <xpath expr="//field[@name='item']" position="after">
           <field name="name"/>
         </xpath>
 

@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 {
     "name": "sid_sale_line_views_ov",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.1.0",
     "category": "Sales",
-    "summary": "Migración de vistas OV (tree/form/search) de sale.order.line desde Studio/export.",
+    "summary": "Refactor de vistas OV de sale.order.line con herencias más limpias y agrupadas.",
     "author": "oscarsidsa81",
     "license": "LGPL-3",
     "depends": [
         "sale",
         "sale_stock",
         "stock",
-        "sid_sale_line_custom_fields",
     ],
     "data": [
         "views/sale_order_line_form_readonly_ov.xml",
