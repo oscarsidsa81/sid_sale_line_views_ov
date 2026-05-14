@@ -34,7 +34,7 @@
 
         <xpath expr="//field[@name='price_subtotal']" position="attributes">
           <attribute name="optional">hide</attribute>
-          <attribute name="groups">!__export__.res_groups_107_41375697</attribute>
+          <attribute name="groups">!sid_sale_line_views_ov.group_operarios</attribute>
         </xpath>
 
         <xpath expr="//field[@name='order_partner_id']" position="attributes">

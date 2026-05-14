@@ -12,10 +12,12 @@
         "stock",
     ],
     "data": [
+        "data/res_groups.xml",
         "views/sale_order_line_form_readonly_ov.xml",
         "views/sale_order_line_search_ov.xml",
         "views/sale_order_line_tree_ov.xml",
     ],
+    "post_init_hook": "post_init_hook",
     "installable": True,
     "application": False,
 }
